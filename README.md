@@ -27,7 +27,7 @@ cd docker_idp_ldap
 
 docker build --rm -t local/idp-cas-zl .
 
-docker run -itd -v /opt/shibboleth-idp/:/opt/shibboleth-idp/ -v /etc/localtime:/etc/localtime:ro -v /etc/hostname:/etc/hostname -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 -p 443:443 -p 8443:8443 --privileged=true local/c7-systemd
+docker run -itd -v /opt/shibboleth-idp/:/opt/shibboleth-idp/ -v /etc/localtime:/etc/localtime:ro -v /etc/hostname:/etc/hostname -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 -p 443:443 -p 8443:8443 --privileged=true local/idp-cas-zl
 
 查询container_id:
 
