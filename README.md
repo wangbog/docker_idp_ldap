@@ -43,6 +43,8 @@ docker stop <container_id> - 停止docker daemon
 
 3. 在容器bash内执行
 
+首先确认: hostname命令确认一下域名是否已识别；date命令确认一下时间及时区是否正确。
+
 sh /root/inst/idp3config/autoconfig.sh  （注意执行中需要输入idp域名，并多次输入证书密码。另外改配置自动回生成Let's Encript 证书）
 
 根据本校LDAP的实际配置，修改/opt/shibboleth-idp/conf/路径下的 ldap.properties 及 attribute-resolver.xml两个文件， 修改完毕后重启tomcat：systemctl status tomcat， 重启后访问一下https://<idp域名>/idp/ 应该可以看到“No services are available at this location.”的提示。
