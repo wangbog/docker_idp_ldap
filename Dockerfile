@@ -23,10 +23,9 @@ echo "export PATH=$PATH:$JAVA_HOME/bin" >> /etc/profile; \
 echo "export CLASSPATH=.:$JAVA_HOME/jre/lib:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar" >> /etc/profile; \
 source /etc/profile; \
 yum -y install epel-release; \
-yum --enablerepo=epel -y install certbot;
-
-yum -y install crontabs
-sed -i '/session    required   pam_loginuid.so/c\#session    required   pam_loginuid.so' /etc/pam.d/crond
-systemctl restart crond
+yum --enablerepo=epel -y install certbot; \
+yum -y install crontabs; \
+sed -i '/session    required   pam_loginuid.so/c\#session    required   pam_loginuid.so' /etc/pam.d/crond; \
+systemctl restart crond;
 
 COPY idp3config /root/inst/idp3config/
