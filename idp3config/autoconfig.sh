@@ -37,6 +37,7 @@ sed -i "s/xxxxxxxxxxxxxxxxxxxx/$salt/g" /opt/shibboleth-idp/conf/attribute-resol
 \cp -f /root/inst/idp3config/relying-party.xml /opt/shibboleth-idp/conf/relying-party.xml
 \cp -f /root/inst/idp3config/attribute-filter.xml /opt/shibboleth-idp/conf/attribute-filter.xml
 \cp -f /root/inst/idp3config/dsmeta.pem /opt/shibboleth-idp/credentials/
+sed -i "s/#idp.consent.allowPerAttribute = false/idp.consent.allowPerAttribute = true/g" /opt/shibboleth-idp/conf/idp.properties
 wget -P /opt/shibboleth-idp/metadata/ https://dspre.carsi.edu.cn/carsifed-metadata-pre.xml
 chown -R tomcat.tomcat /opt/shibboleth-idp
 systemctl restart httpd
