@@ -50,3 +50,5 @@ sh /root/inst/idp3config/autoconfig.sh  （注意执行中需要输入idp域名�
 将/opt/shibboleth-idp/metadata/idp-metadata.xml通过CARSI自服务系统上传到联盟（docker容器启动时已与宿主机同步了/opt/shibboleth-idp/路径，因此直接在宿主机中即可找到该文件）
 
 sh /root/inst/idp3config/startidp.sh
+
+
