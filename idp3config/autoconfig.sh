@@ -30,8 +30,7 @@ sh /root/inst/idp3config/shibboleth-identity-provider-3.4.3/bin/install.sh
 openssl pkcs12 -in /opt/shibboleth-idp/credentials/idp-backchannel.p12 -out /opt/shibboleth-idp/credentials/idp-backchannel.key -nocerts -nodes
 \cp -f /root/inst/idp3config/metadata-providers-pre.xml /opt/shibboleth-idp/conf/metadata-providers.xml
 \cp -f /root/inst/idp3config/attribute-resolver.xml /opt/shibboleth-idp/conf/attribute-resolver.xml
-salt=`openssl rand 32 -base64`
-sed -i "s/xxxxxxxxxxxxxxxxxxxx/$salt/g" /opt/shibboleth-idp/conf/attribute-resolver.xml
+sed s/xxxxxxxxxxxxxxxxxxxx/`openssl rand 32 -base64`/g /opt/shibboleth-idp/conf/attribute-resolver.xml
 \cp -f /root/inst/idp3config/audit.xml /opt/shibboleth-idp/conf/audit.xml
 \cp -f /root/inst/idp3config/consent-intercept-config.xml /opt/shibboleth-idp/conf/intercept/consent-intercept-config.xml
 \cp -f /root/inst/idp3config/relying-party.xml /opt/shibboleth-idp/conf/relying-party.xml
