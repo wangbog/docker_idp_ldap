@@ -15,6 +15,7 @@ systemctl restart tomcat
 
 # config https
 certbot certonly --agree-tos --no-eff-email -m carsi@pku.edu.cn -d idpzl.pku.edu.cn --webroot -w /var/www/html
+systemctl restart crond
 echo "0 0 1 * * certbot renew >/dev/null 2>&1" >> /var/spool/cron/root
 \cp -f /root/inst/idp3config/ssl.conf /etc/httpd/conf.d/ssl.conf
 \cp -f /root/inst/idp3config/idp.conf /etc/httpd/conf.d/idp.conf

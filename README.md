@@ -25,9 +25,9 @@ git clone https://github.com/carsi-cernet/docker_idp_ldap.git
 
 cd docker_idp_ldap
 
-docker build --rm -t local/idp-cas-zl .
+docker build --rm -t local/carsi-idp-ldap .
 
-docker run -itd -v /opt/shibboleth-idp/:/opt/shibboleth-idp/ -v /etc/localtime:/etc/localtime:ro -v /etc/hostname:/etc/hostname -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 -p 443:443 -p 8443:8443 --privileged=true local/idp-cas-zl
+docker run -itd -v /opt/shibboleth-idp/:/opt/shibboleth-idp/ -v /etc/localtime:/etc/localtime:ro -v /etc/hostname:/etc/hostname -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 -p 443:443 -p 8443:8443 --privileged=true local/carsi-idp-ldap
 
 查询container_id:
 
@@ -51,4 +51,4 @@ sh /root/inst/idp3config/autoconfig.sh  （注意执行中需要输入idp域名�
 
 sh /root/inst/idp3config/startidp.sh
 
-
+之后即可在预上线环境中进行测试了。
