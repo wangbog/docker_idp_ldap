@@ -25,4 +25,8 @@ source /etc/profile; \
 yum -y install epel-release; \
 yum --enablerepo=epel -y install certbot;
 
+yum -y install crontabs
+sed -i '/session    required   pam_loginuid.so/c\#session    required   pam_loginuid.so' /etc/pam.d/crond
+systemctl restart crond
+
 COPY idp3config /root/inst/idp3config/
