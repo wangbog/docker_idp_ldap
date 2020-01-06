@@ -14,12 +14,13 @@ systemctl restart httpd
 systemctl restart tomcat
 
 # config https
-certbot certonly --agree-tos --no-eff-email -m carsi@pku.edu.cn -d idpzl.pku.edu.cn --webroot -w /var/www/html
+hostname=`hostname`
+admin_mail="admin@xxx.edu.cn"
+certbot certonly --agree-tos --no-eff-email -m $admin_mail -d $hostname --webroot -w /var/www/html
 systemctl restart crond
 echo "0 0 1 * * certbot renew >/dev/null 2>&1" >> /var/spool/cron/root
 \cp -f /root/inst/idp3config/ssl.conf /etc/httpd/conf.d/ssl.conf
 \cp -f /root/inst/idp3config/idp.conf /etc/httpd/conf.d/idp.conf
-hostname=`hostname`
 sed -i "s/MY_IDP_HOSTNAME/$hostname/g" /etc/httpd/conf.d/idp.conf
 sed -i "s/#Listen 443/Listen 443/g" /etc/httpd/conf.d/ports.conf
 systemctl restart httpd
