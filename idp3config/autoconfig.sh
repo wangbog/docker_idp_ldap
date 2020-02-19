@@ -1,4 +1,5 @@
 source /etc/profile
+
 # config httpd
 \cp -f /root/inst/idp3config/httpd.conf /etc/httpd/conf/httpd.conf
 \cp -f /root/inst/idp3config/index.html /var/www/html/index.html

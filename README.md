@@ -1,5 +1,5 @@
 # docker_idp_ldap
-1. 配置宿主机环境
+1. 配置宿主机环境(参考https://wiki.carsi.edu.cn/pages/viewpage.action?pageId=1671214)
 
 配置本机IP
 
@@ -9,9 +9,11 @@
 
 开放本机端口（如firewall-cmd）
 
-设置时间同步（NTP配置）
+设置时间同步（NTP配置，IdP必须要求时间同步）
 
-2. 配置Docker环境
+2. 配置Docker环境（如宿主机已安装配置好docker环境，则忽略）
+
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
 sudo yum -y install -y yum-utils device-mapper-persistent-data lvm2
 
@@ -20,6 +22,10 @@ sudo yum -y install docker-ce docker-ce-cli containerd.io
 sudo systemctl start docker
 
 可以用hello-world docker镜像验证一下环境（这一步可以不做）： sudo docker run hello-world
+
+3. 在宿主机上启动IdP的docker
+
+sudo -y install git
 
 git clone https://github.com/carsi-cernet/docker_idp_ldap.git
 
@@ -41,7 +47,7 @@ docker exec -it <container_id> /bin/bash
 
 docker stop <container_id> - 停止docker daemon
 
-3. 在容器bash内执行
+4. 在容器bash内执行
 
 首先确认: hostname命令确认一下域名是否已识别；date命令确认一下时间及时区是否正确。
 
@@ -55,4 +61,4 @@ sh /root/inst/idp3config/autoconfig.sh  （注意执行中需要输入idp域名�
 
 sh /root/inst/idp3config/startidp.sh
 
-之后即可在预上线环境中进行测试了。
+之后即可在预上线环境中进行测试了（具体参考：https://wiki.carsi.edu.cn/pages/viewpage.action?pageId=2261000）。
